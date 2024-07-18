@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "493941591262",
+    "project_id": "secondproyect-9c86f",
+    "storage_bucket": "secondproyect-9c86f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:493941591262:android:43547a283ac0f7bd11064f",
+        "android_client_info": {
+          "package_name": "com.EventosUts"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyArEw6toJOsVExhyxNhqyUrR2cGcUKJjy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
