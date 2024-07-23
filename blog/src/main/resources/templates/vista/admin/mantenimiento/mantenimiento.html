@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mantenimiento</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .fixed-width {
+            width: 550px; /* Ajusta este valor según sea necesario */
+            word-wrap: break-word;
+            white-space: normal; /* Permite el ajuste de líneas */
+            overflow-wrap: break-word; /* Asegura que las palabras largas se ajusten */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header th:replace="vista/admin/index :: header"></header>
+        <main>
+            <div align="center" class="container">
+                <h6>BLOGS</h6>
+                <div style="height: 20px"></div>
+                <a th:href="@{/admin/mantenimiento/nuevo}" class="btn btn-success">Crear un Blog</a>
+                <div style="height: 20px"></div>
+                <table class="table table-striped">
+                    <thead>  
+                        <tr>
+                            <td>id </td>
+                            <td>Titulo</td>
+                            <td class="fixed-width">Contenido</td>
+                            <td>Autor</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="blog : ${blogs}">
+                            <td th:text="${blog.id}"></td>
+                            <td th:text="${blog.titulo}"></td>
+                            <td class="fixed-width" th:text="${blog.parrafo}"></td>
+                            <td th:text="${blog.usuario?.nombre}"></td>
+                            <td>
+                                <a th:href="@{'mantenimiento/editar/'+${blog.id}}" class="btn btn-info">Editar</a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a th:href="@{'mantenimiento/eliminar/'+${blog.id}}" class="btn btn-danger">Eliminar</a>    
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

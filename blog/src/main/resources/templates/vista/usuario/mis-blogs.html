@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Mis Blogs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <header th:replace="vista/usuario/index :: header"></header>
+        <main>
+            <div th:each="blog : ${misBlogs}" class="card mb-4">
+                <div class="card-header">
+                    <h2 th:text="${blog.titulo}">Título del Blog</h2>
+                </div>
+                <div class="card-body">
+                    <p th:text="${blog.parrafo}">Contenido del blog...</p>
+                </div>
+                <div class="card-footer">
+                    <form th:action="@{/comentarios}" method="post">
+                        <div class="form-group">
+                            <label for="comentario">Deja un comentario:</label>
+                            <input type="text" id="comentario" name="comentario" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

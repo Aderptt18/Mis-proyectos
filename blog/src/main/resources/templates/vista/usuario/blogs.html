@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Todos los Blogs</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <style>
+        .comentarios-container {
+            height: 175px;
+            overflow-y: scroll;
+            margin-top: 10px;
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header th:replace="vista/usuario/index :: header"></header>
+        <main>
+            <div th:each="blog : ${blogs}" class="card mb-4">
+                <div class="card-header">
+                    <h4 th:text="${blog.titulo}">Título del Blog</h4>
+                </div>
+                <div class="card-body">
+                    <p th:text="${blog.parrafo}">Contenido del blog...</p>
+                </div>
+                <div class="card-footer">
+                    <h6>Comentarios:</h6>
+
+                    <div class="comentarios-container" id="comments-[[${blog.id}]]">
+                        <div th:each="comentario : ${comentariosPorBlog[blog.id]}" class="card mb-2">
+                            <div class="card-body">
+                                <p th:text="${comentario.nombreUsuario} + ': ' + ${comentario.contenido}">Comentario...</p>
+                            </div>
+                        </div>
+                    </div>
+                    <form th:action="@{/comentarios}" method="post">
+                        <input type="hidden" name="blogId" th:value="${blog.id}" />
+                        <div class="form-group">
+                            <label for="comentario">Deja un comentario:</label>
+                            <input type="text" id="comentario" name="contenido" class="form-control" required>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </main>
+    </div>
+</body>
+
+</html>

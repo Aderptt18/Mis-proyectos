@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Configuracion</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <header th:replace="vista/admin/index :: header"></header>
+        <main>
+            <div align="center" class="container">
+                <h6>USUARIOS</h6>
+                <div style="height: 20px"></div>
+                <a th:href="@{configuracion/nuevo}" class="btn btn-success">Crear un Usuario</a>
+                <div style="height: 20px"></div>
+
+                <table class="table table-striped">
+                    <thead>  
+                        <tr>
+                            <td>Código </td>
+                            <td>Nombre</td>
+                            <td>Correo</td>
+                            <td>Contraseña</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="usuario : ${listaUsuarios}">
+                            <td th:text="${usuario.id}"></td>
+                            <td th:text="${usuario.nombre}"></td>
+                            <td th:text="${usuario.correo}"></td>
+                            <td th:text="${usuario.contraseña}"></td>
+                            <td>
+                                <a th:href="@{'configuracion/editar/'+${usuario.id}}" class="btn btn-info">Editar</a>
+                                &nbsp;&nbsp;&nbsp;
+                                <a th:href="@{'configuracion/eliminar/'+${usuario.id}}" class="btn btn-danger">Eliminar</a>    
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </main>
+    </div>
+</body>
+</html>

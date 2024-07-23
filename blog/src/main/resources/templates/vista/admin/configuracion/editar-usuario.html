@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Usuario</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="container">
+        <header th:replace="vista/admin/index :: header"></header>
+        <main>
+            <form    th:action="@{/admin/configuracion/editar}" th:object="${usuario}" method="POST">
+                <!-- Campos del formulario -->
+                <div class="form-group">
+                    <label for="codigo">Código:</label>
+                    <input type="text" class="form-control" id="codigo" th:field="*{id}" readonly>
+                </div>
+                <div class="form-group">
+                    <label for="nombre">Nombre:</label>
+                    <input type="text" class="form-control" id="nombre" th:field="*{nombre}">
+                </div>
+                <div class="form-group">
+                    <label for="correo">Correo:</label>
+                    <input type="text" class="form-control" id="correo" th:field="*{correo}">
+                </div>
+                <div class="form-group">
+                    <label for="contraseña">Contraseña:</label>
+                    <input type="text" class="form-control" id="contraseña" th:field="*{contraseña}">
+                </div>
+                <button type="submit" class="btn btn-primary">Guardar Cambios</button>
+            </form>
+        </main>
+    </div>
+</body>
+</html>
